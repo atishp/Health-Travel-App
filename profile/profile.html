@@ -1,0 +1,388 @@
+<?php
+/* Displays user information and some useful messages */
+session_start();
+
+// Check if user is logged in using the session variable
+if ( $_SESSION['logged_in'] != 1 ) {
+  $_SESSION['message'] = "You must log in before viewing your profile page!";
+  header("location: ../error.php");    
+}
+else {
+    // Makes it easier to read
+    $first_name = $_SESSION['first_name'];
+    $last_name = $_SESSION['last_name'];
+    $email = $_SESSION['email'];
+    $active = $_SESSION['active'];
+}
+?>
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
+	<link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
+	<link rel="stylesheet" href="css/style.min.css"> <!-- Resource style -->
+	<link rel="stylesheet" href="css/style.max.css"> <!-- Resource style -->
+	<link rel="stylesheet" href="css/grid.css"> <!-- Resource style -->
+	<script src="js/modernizr.js"></script> <!-- Modernizr -->
+  	<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
+	<script src="js/nav/modernizr.js"></script> <!-- Modernizr -->
+	<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  	
+	<title>My Profile</title>
+</head>
+<body>
+
+	<header>
+            <nav>
+                <div class="row nav-row">
+                    <div class="header-nav-controls">
+                        <a href="#"><img src="img/travel_logo_white.png" alt="Company Logo" class="logo"></a>
+                        <img src="img/travel_logo_white.png" alt="Company Logo" class="logo-black">
+                        <a class="mobile-nav-icon js--nav-icon"><i class="ion-navicon-round"></i></a>
+                    </div>
+                    <ul class="main-nav js--main-nav">
+                        <li><a href="../index.html" class="scrollTrigger" data-scroll-to="js--section-features"></a></li>
+                        <li><a href="../My Data/my_data.html">my data</a></li>
+						<li><a href="../edit_profile/edit_profile.html">edit profile</a></li>
+						<li><a href="../My History/my_history.html">my history</a></li>
+						<li><a href="../My articles/Articles.html">my articles</a></li>
+                        <li><a href="#" class="scrollTrigger" data-scroll-to="js--section-cities"></a></li>
+                        <li><a class="cd-signin" href="logout.php" name="logout">log out</a></li>
+						<!--<a href="logout.php"><button class="button button-block" name="logout"/>Log Out</button></a>-->
+						
+                    </ul>
+                </div>
+            </nav>
+	</header>
+	<h1>Welcome</h1>
+          
+          <p>
+          <?php 
+     
+          // Display message about account verification link only once
+          if ( isset($_SESSION['message']) )
+          {
+              echo $_SESSION['message'];
+              
+              // Don't annoy the user with more messages upon page refresh
+              unset( $_SESSION['message'] );
+          }
+          
+          ?>
+          </p>
+          
+          <?php
+          
+          // Keep reminding the user this account is not active, until they activate
+          if ( !$active ){
+              echo
+              '<div class="info">
+              Account is unverified, please confirm your email by clicking
+              on the email link!
+              </div>';
+          }
+          
+          ?>
+          
+          <h2><?php echo $first_name.' '.$last_name; ?></h2>
+          <p><?= $email ?></p>
+	<div class="cd-3d-portfolio">
+	<nav class="cd-3d-portfolio-navigation">
+		<div class="cd-wrapper">
+			<h1>My Profile</h1>
+				
+			<ul>
+				<li><a href="#0" class="selected">1</a></li>
+				<li><a href="#0">2</a></li>
+				<!--<li><a href="#0">3</a></li>-->
+			</ul>
+		</div>
+	</nav> <!-- .cd-3d-portfolio-navigation -->
+	
+	<div class="projects">
+		<ul class="row">
+			<li class="front-face selected project-1">
+				<div class="project-wrapper">
+					<div class="project-image">
+						<div class="project-title">
+							<h2>Transportation</h2>
+						</div>
+					</div> <!-- .project-image -->
+
+					<div class="project-content">
+						<div>
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique eius ea sequi distinctio autem repellat, libero esse nam. Quam nesciunt nobis iure cupiditate neque hic magnam optio assumenda unde sequi. Rem cumque iure cum reprehenderit repellendus, autem voluptates maxime ipsa numquam libero nobis saepe laudantium amet praesentium voluptatibus, fuga eveniet.
+							</p>
+
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit quod, molestiae voluptates commodi debitis saepe hic, aut magnam accusantium nostrum error ratione eum vero accusamus autem modi labore doloremque explicabo ut perspiciatis nulla molestias sequi eligendi tempore libero. Dolore iste vitae illum sequi neque quas, dolorem dolor officiis voluptatum quae voluptatibus tenetur molestias soluta blanditiis amet debitis incidunt eaque ratione facere repudiandae cupiditate aspernatur, velit ea itaque. Optio aut harum ad modi dolore doloribus tenetur laboriosam aspernatur minima itaque velit quia, illo sapiente unde, eum autem expedita facilis aliquam, dolorum dicta fuga totam sed pariatur iste! Inventore laudantium qui nostrum, perspiciatis quod! Molestias asperiores facilis explicabo necessitatibus dicta perferendis, esse, quisquam autem corporis ab doloremque nisi voluptas quidem, modi sequi aperiam, illum reiciendis delectus nostrum architecto eligendi sint deleniti voluptate! Magni quia harum eligendi laudantium fuga aspernatur veniam sunt impedit, vitae sit praesentium quam porro dolorem in eveniet iusto. Dicta tempora quo itaque minima expedita accusamus ex perferendis repellat totam! Fugit rerum nihil distinctio ducimus delectus, accusamus enim eos eum nulla fugiat aliquam blanditiis minus omnis maiores, quia numquam placeat. Molestias cupiditate deleniti porro praesentium, aliquam blanditiis maxime iste necessitatibus provident optio ipsum, beatae, libero nostrum, maiores! Temporibus, reiciendis, quibusdam.
+							</p>
+						</div>
+					</div> <!-- .project-content -->
+
+					<a href="#0" class="close-project">Close</a>
+				</div> <!-- .project-wrapper -->
+			</li>
+
+			<li class="right-face project-2">
+				<div class="project-wrapper">
+					<div class="project-image">
+						<div class="project-title">
+							<h2>Sleep cycle</h2>
+						</div>
+					</div> <!-- .project-image -->
+
+					<div class="project-content">
+						<div>
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique eius ea sequi distinctio autem repellat, libero esse nam. Quam nesciunt nobis iure cupiditate neque hic magnam optio assumenda unde sequi. Rem cumque iure cum reprehenderit repellendus, autem voluptates maxime ipsa numquam libero nobis saepe laudantium amet praesentium voluptatibus, fuga eveniet.
+							</p>
+
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique eius ea sequi distinctio autem repellat, libero esse nam. Quam nesciunt nobis iure cupiditate neque hic magnam optio assumenda unde sequi. Rem cumque iure cum reprehenderit repellendus, autem voluptates maxime ipsa numquam libero nobis saepe laudantium amet praesentium voluptatibus, fuga eveniet.
+							</p>
+
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique eius ea sequi distinctio autem repellat, libero esse nam. Quam nesciunt nobis iure cupiditate neque hic magnam optio assumenda unde sequi. Rem cumque iure cum reprehenderit repellendus, autem voluptates maxime ipsa numquam libero nobis saepe laudantium amet praesentium voluptatibus, fuga eveniet.
+							</p>
+
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique eius ea sequi distinctio autem repellat, libero esse nam. Quam nesciunt nobis iure cupiditate neque hic magnam optio assumenda unde sequi. Rem cumque iure cum reprehenderit repellendus, autem voluptates maxime ipsa numquam libero nobis saepe laudantium amet praesentium voluptatibus, fuga eveniet.
+							</p>
+
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique eius ea sequi distinctio autem repellat, libero esse nam. Quam nesciunt nobis iure cupiditate neque hic magnam optio assumenda unde sequi. Rem cumque iure cum reprehenderit repellendus, autem voluptates maxime ipsa numquam libero nobis saepe laudantium amet praesentium voluptatibus, fuga eveniet.
+							</p>
+
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique eius ea sequi distinctio autem repellat, libero esse nam. Quam nesciunt nobis iure cupiditate neque hic magnam optio assumenda unde sequi. Rem cumque iure cum reprehenderit repellendus, autem voluptates maxime ipsa numquam libero nobis saepe laudantium amet praesentium voluptatibus, fuga eveniet.
+							</p>
+						</div>
+					</div> <!-- .project-content -->
+
+					<a href="#0" class="close-project">Close</a>
+				</div> <!-- .project-wrapper -->
+			</li>
+
+			
+		</ul> <!-- .row -->
+	
+		<ul class="row">
+			<li class="front-face selected project-4">
+				<div class="project-wrapper">
+					<div class="project-image">
+						<div class="project-title">
+							<h2>Destination</h2>
+						</div>
+					</div> <!-- .project-image -->
+
+					<div class="project-content">
+						<div>
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique eius ea sequi distinctio autem repellat, libero esse nam. Quam nesciunt nobis iure cupiditate neque hic magnam optio assumenda unde sequi. Rem cumque iure cum reprehenderit repellendus, autem voluptates maxime ipsa numquam libero nobis saepe laudantium amet praesentium voluptatibus, fuga eveniet.
+							</p>
+
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique eius ea sequi distinctio autem repellat, libero esse nam. Quam nesciunt nobis iure cupiditate neque hic magnam optio assumenda unde sequi. Rem cumque iure cum reprehenderit repellendus, autem voluptates maxime ipsa numquam libero nobis saepe laudantium amet praesentium voluptatibus, fuga eveniet.
+							</p>
+
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique eius ea sequi distinctio autem repellat, libero esse nam. Quam nesciunt nobis iure cupiditate neque hic magnam optio assumenda unde sequi. Rem cumque iure cum reprehenderit repellendus, autem voluptates maxime ipsa numquam libero nobis saepe laudantium amet praesentium voluptatibus, fuga eveniet.
+							</p>
+
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique eius ea sequi distinctio autem repellat, libero esse nam. Quam nesciunt nobis iure cupiditate neque hic magnam optio assumenda unde sequi. Rem cumque iure cum reprehenderit repellendus, autem voluptates maxime ipsa numquam libero nobis saepe laudantium amet praesentium voluptatibus, fuga eveniet.
+							</p>
+
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique eius ea sequi distinctio autem repellat, libero esse nam. Quam nesciunt nobis iure cupiditate neque hic magnam optio assumenda unde sequi. Rem cumque iure cum reprehenderit repellendus, autem voluptates maxime ipsa numquam libero nobis saepe laudantium amet praesentium voluptatibus, fuga eveniet.
+							</p>
+
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique eius ea sequi distinctio autem repellat, libero esse nam. Quam nesciunt nobis iure cupiditate neque hic magnam optio assumenda unde sequi. Rem cumque iure cum reprehenderit repellendus, autem voluptates maxime ipsa numquam libero nobis saepe laudantium amet praesentium voluptatibus, fuga eveniet.
+							</p>
+						</div>
+					</div> <!-- .project-content -->
+
+					<a href="#0" class="close-project">Close</a>
+				</div> <!-- .project-wrapper -->
+			</li>
+
+			<li class="right-face project-5">
+				<div class="project-wrapper">
+					<div class="project-image">
+						<div class="project-title">
+							<h2>tips and tricks</h2>
+						</div>
+					</div> <!-- .project-image -->
+
+					<div class="project-content">
+						<div>
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique eius ea sequi distinctio autem repellat, libero esse nam. Quam nesciunt nobis iure cupiditate neque hic magnam optio assumenda unde sequi. Rem cumque iure cum reprehenderit repellendus, autem voluptates maxime ipsa numquam libero nobis saepe laudantium amet praesentium voluptatibus, fuga eveniet.
+							</p>
+
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique eius ea sequi distinctio autem repellat, libero esse nam. Quam nesciunt nobis iure cupiditate neque hic magnam optio assumenda unde sequi. Rem cumque iure cum reprehenderit repellendus, autem voluptates maxime ipsa numquam libero nobis saepe laudantium amet praesentium voluptatibus, fuga eveniet.
+							</p>
+
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique eius ea sequi distinctio autem repellat, libero esse nam. Quam nesciunt nobis iure cupiditate neque hic magnam optio assumenda unde sequi. Rem cumque iure cum reprehenderit repellendus, autem voluptates maxime ipsa numquam libero nobis saepe laudantium amet praesentium voluptatibus, fuga eveniet.
+							</p>
+
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique eius ea sequi distinctio autem repellat, libero esse nam. Quam nesciunt nobis iure cupiditate neque hic magnam optio assumenda unde sequi. Rem cumque iure cum reprehenderit repellendus, autem voluptates maxime ipsa numquam libero nobis saepe laudantium amet praesentium voluptatibus, fuga eveniet.
+							</p>
+
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique eius ea sequi distinctio autem repellat, libero esse nam. Quam nesciunt nobis iure cupiditate neque hic magnam optio assumenda unde sequi. Rem cumque iure cum reprehenderit repellendus, autem voluptates maxime ipsa numquam libero nobis saepe laudantium amet praesentium voluptatibus, fuga eveniet.
+							</p>
+
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique eius ea sequi distinctio autem repellat, libero esse nam. Quam nesciunt nobis iure cupiditate neque hic magnam optio assumenda unde sequi. Rem cumque iure cum reprehenderit repellendus, autem voluptates maxime ipsa numquam libero nobis saepe laudantium amet praesentium voluptatibus, fuga eveniet.
+							</p>
+						</div>
+					</div> <!-- .project-content -->
+
+					<a href="#0" class="close-project">Close</a>
+				</div> <!-- .project-wrapper -->
+			</li>
+
+			
+		</ul> <!-- .row -->
+	
+		<ul class="row">
+			<li class="front-face selected project-7">
+				<div class="project-wrapper">
+					<div class="project-image">
+						<div class="project-title">
+							<h2>Weather</h2>
+						</div>
+					</div> <!-- .project-image -->
+
+					<div class="project-content">
+						<div>
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique eius ea sequi distinctio autem repellat, libero esse nam. Quam nesciunt nobis iure cupiditate neque hic magnam optio assumenda unde sequi. Rem cumque iure cum reprehenderit repellendus, autem voluptates maxime ipsa numquam libero nobis saepe laudantium amet praesentium voluptatibus, fuga eveniet.
+							</p>
+
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique eius ea sequi distinctio autem repellat, libero esse nam. Quam nesciunt nobis iure cupiditate neque hic magnam optio assumenda unde sequi. Rem cumque iure cum reprehenderit repellendus, autem voluptates maxime ipsa numquam libero nobis saepe laudantium amet praesentium voluptatibus, fuga eveniet.
+							</p>
+
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique eius ea sequi distinctio autem repellat, libero esse nam. Quam nesciunt nobis iure cupiditate neque hic magnam optio assumenda unde sequi. Rem cumque iure cum reprehenderit repellendus, autem voluptates maxime ipsa numquam libero nobis saepe laudantium amet praesentium voluptatibus, fuga eveniet.
+							</p>
+
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique eius ea sequi distinctio autem repellat, libero esse nam. Quam nesciunt nobis iure cupiditate neque hic magnam optio assumenda unde sequi. Rem cumque iure cum reprehenderit repellendus, autem voluptates maxime ipsa numquam libero nobis saepe laudantium amet praesentium voluptatibus, fuga eveniet.
+							</p>
+
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique eius ea sequi distinctio autem repellat, libero esse nam. Quam nesciunt nobis iure cupiditate neque hic magnam optio assumenda unde sequi. Rem cumque iure cum reprehenderit repellendus, autem voluptates maxime ipsa numquam libero nobis saepe laudantium amet praesentium voluptatibus, fuga eveniet.
+							</p>
+
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique eius ea sequi distinctio autem repellat, libero esse nam. Quam nesciunt nobis iure cupiditate neque hic magnam optio assumenda unde sequi. Rem cumque iure cum reprehenderit repellendus, autem voluptates maxime ipsa numquam libero nobis saepe laudantium amet praesentium voluptatibus, fuga eveniet.
+							</p>
+						</div>
+					</div> <!-- .project-content -->
+
+					<a href="#0" class="close-project">Close</a>
+				</div> <!-- .project-wrapper -->
+			</li>
+
+			<li class="right-face project-8">
+				<div class="project-wrapper">
+					<div class="project-image">
+						<div class="project-title">
+							<h2>My Doctor</h2>
+						</div>
+					</div> <!-- .project-image -->
+
+					<div class="project-content">
+						<div>
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique eius ea sequi distinctio autem repellat, libero esse nam. Quam nesciunt nobis iure cupiditate neque hic magnam optio assumenda unde sequi. Rem cumque iure cum reprehenderit repellendus, autem voluptates maxime ipsa numquam libero nobis saepe laudantium amet praesentium voluptatibus, fuga eveniet.
+							</p>
+
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique eius ea sequi distinctio autem repellat, libero esse nam. Quam nesciunt nobis iure cupiditate neque hic magnam optio assumenda unde sequi. Rem cumque iure cum reprehenderit repellendus, autem voluptates maxime ipsa numquam libero nobis saepe laudantium amet praesentium voluptatibus, fuga eveniet.
+							</p>
+
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique eius ea sequi distinctio autem repellat, libero esse nam. Quam nesciunt nobis iure cupiditate neque hic magnam optio assumenda unde sequi. Rem cumque iure cum reprehenderit repellendus, autem voluptates maxime ipsa numquam libero nobis saepe laudantium amet praesentium voluptatibus, fuga eveniet.
+							</p>
+
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique eius ea sequi distinctio autem repellat, libero esse nam. Quam nesciunt nobis iure cupiditate neque hic magnam optio assumenda unde sequi. Rem cumque iure cum reprehenderit repellendus, autem voluptates maxime ipsa numquam libero nobis saepe laudantium amet praesentium voluptatibus, fuga eveniet.
+							</p>
+
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique eius ea sequi distinctio autem repellat, libero esse nam. Quam nesciunt nobis iure cupiditate neque hic magnam optio assumenda unde sequi. Rem cumque iure cum reprehenderit repellendus, autem voluptates maxime ipsa numquam libero nobis saepe laudantium amet praesentium voluptatibus, fuga eveniet.
+							</p>
+
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique eius ea sequi distinctio autem repellat, libero esse nam. Quam nesciunt nobis iure cupiditate neque hic magnam optio assumenda unde sequi. Rem cumque iure cum reprehenderit repellendus, autem voluptates maxime ipsa numquam libero nobis saepe laudantium amet praesentium voluptatibus, fuga eveniet.
+							</p>
+						</div>
+					</div> <!-- .project-content -->
+
+					<a href="#0" class="close-project">Close</a>
+				</div> <!-- .project-wrapper -->
+			</li>
+
+			
+		</ul> <!-- .row -->
+	</div><!-- .projects -->
+
+	<a href="#0" class="cd-top">Top</a>
+</div>
+	
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<script>
+	if( !window.jQuery ) document.write('<script src="js/jquery-3.0.0.min.js"><\/script>');
+</script>
+<script src="js/main.js"></script> <!-- Resource jQuery -->
+<footer>
+            <div class="row">
+                <div class="col span-1-of-2">
+                    <ul class="footer-nav">
+                        <li><a href="#">About us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Windows App</a></li>
+                        <li><a href="#">iOS App</a></li>
+                        <li><a href="#">Android App</a></li>
+                        <li><a href="#"></a></li>
+                    </ul>
+                </div>
+                <div class="col span-1-of-2">
+                    <ul class="social-links">
+                        <li><a href="#" target="_blank"><i class="ion-social-facebook"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="ion-social-googleplus"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="ion-heart"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="ion-social-twitter"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="ion-social-instagram"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row copyright-text">
+                <p>
+                    
+                </p>
+            </div>
+        </footer>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/selectivizr/1.0.3b/selectivizr.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.waypoints/2.0.5/waypoints.min.js"></script>
+    <script type="text/javascript" src="js/script.min.js"></script>
+</html>
